@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+</head>
+<body background="Imagenes/descarga.jpg">
+    <center><h1 id="h-1"></h1></center><br><br>
+    <center><h2 id="h-2"></h2></center><br><br>
+    <center><h4 id="h-4"></h4></center><br><br>
+    <script>
+        getParameter = (key) =>{
+            address = window.location.search;
+            parameterList = new URLSearchParams(address);
+            return parameterList.get(key);
+        }
+        var nombre = getParameter("nombre");
+        document.getElementById("h-1").innerHTML = "Bienvenido " + nombre;
+        var apellido = getParameter("apellido");
+        document.getElementById("h-2").innerHTML = "Tus apellidos son: " + apellido;
+    
+        var edad = getParameter("fecha");
+        var arreglo = edad.split("-");
+        var edad = arreglo[0];
+        if (edad > 2023){
+            document.getElementById("h-4").innerHTML = "Naciste después del 2023";
+        }else{
+            document.getElementById("h-4").innerHTML = "Tu edad es de " + (2023 - edad) + " años";
+        }
+        var correo = getParameter("correo");
+        var telefono = getParameter("telefono");
+    </script>
+
+    <center><h3><a href="mailto:correo">Click para correo</a></h3></center><br><br>
+    <center><h3><a href="tel:telefono">Click para telefono</a></h3></center><br><br>
+</body>
+</html>
